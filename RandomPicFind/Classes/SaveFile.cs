@@ -1,35 +1,32 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 
-namespace RandomPicFind.Classes
+namespace RandomPicFind.Classes;
+public class SaveFile
 {
-    internal class SaveFile
+    /// <summary>
+    /// This method downloads and saves the file by link.
+    /// </summary>
+    /// <param name="format">File format</param>
+    /// <param name="link">File link</param>
+    public void SaveFileInFolder(string format, string link)
     {
-        public void SaveFileInFolder(string format, string link)
-        {
-            Dictionary<string, string> formatFilter = new()
+        Dictionary<string, string> formatFilter = new()
             {
                  {"gif", "Image Files(*.GIF)|*.GIF|All files (*.*)|*.*"},
                  {"webm", "Image Files(*.WEBM)|*.WEBM|All files (*.*)|*.*"}
             };
 
-            Microsoft.Win32.SaveFileDialog dlg = new();
-            dlg.FileName = "Random"; // Default file name
-            dlg.DefaultExt = $".{format}"; // Default file extension
-            dlg.Filter = formatFilter[format]; // Filter files by extension
+        // Default file name, file extension, filter files by extension
+        Microsoft.Win32.SaveFileDialog dlg = new()
+        { FileName = "Random", DefaultExt = $".{format}", Filter = formatFilter[format] };
 
-            // Show save file dialog box
-            bool? result = dlg.ShowDialog();
-
-            // Process save file dialog box results
-            if (result == true)
-            {
-                //Save gif in folder
-                using (WebClient web = new())
-                {
-                    web.DownloadFile(link, dlg.FileName);
-                }
-            }
+        // Process save file dialog box results
+        if (dlg.ShowDialog() == true)
+        {
+            //Save file in folder
+            using (WebClient web = new())
+                web.DownloadFile(link, dlg.FileName);
         }
     }
 }

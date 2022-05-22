@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RandomPicFind.Classes;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Windows;
@@ -29,7 +28,6 @@ namespace RandomPicFind.Windows
             try
             {
                 Rootobject context = null;
-                WordObject wordContext = null;
                 using (WebClient web = new WebClient())
                 {
                     web.Encoding = Encoding.UTF8;
@@ -53,6 +51,8 @@ namespace RandomPicFind.Windows
                             if (webmLink == null) properties.WebmBtnEnable = false;
                             else properties.WebmBtnEnable = true;
 
+
+
                             properties.ImageUrl = gifLink;
                             go = false;
                         }
@@ -61,10 +61,10 @@ namespace RandomPicFind.Windows
 
 
                     //var bgcolor = context.results[1].media[0].gif.dims;
-                    //var bgcolor2 = context.results[1].media[0].gif.preview; //превьюшка
+                    //В историю идёт: 
+                    //var previewImg = context.results[1].media[0].gif.preview; //превьюшка
                     //var bgcolor3 = context.results[1].media[0].gif.size; //вес в байтах
                     //var bgcolor5 = context.results[1].tags[0];
-                    //var bgcolor6 = context.results[1].itemurl; //ссылка на гифку на сайте в формате "https://tenor.com/view/snoop-dogg-rap-hip-hop-west-coast-crips-gif-24898891"
                     //var bgcolor7 = context.results[1].title; 
                     //var bgcolor8 = context.results[1].hasaudio; //есть ли звук
                     //var bgcolor9 = context.results[1].content_rating;
