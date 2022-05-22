@@ -1,0 +1,41 @@
+﻿<Window x:Class="RandomPicFind.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandomPicFind.Windows"
+        xmlns:gif="clr-namespace:XamlAnimatedGif;assembly=XamlAnimatedGif"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Случайная гифка..." VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{DynamicResource SmallButtonStyle}" Content="GIF" Click="GifSaveBtn_Click"/>
+                <Button IsEnabled="{Binding WebmBtnEnable}" Style="{DynamicResource SmallButtonStyle}" Content="WEBM" Click="WebmSaveBtn_Click"/>
+            </StackPanel>
+            <Image Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                   gif:AnimationBehavior.SourceUri="{Binding ImageUrl}" Stretch="Fill"/>
+            <Button Grid.Row="2" Content="Найти" Click="Button_Click"/>
+        </Grid>
+
+        <!--</StackPanel>-->
+    </Grid>
+</Window>
